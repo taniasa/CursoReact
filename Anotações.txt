@@ -8,3 +8,9 @@ npm i --save-dev babel-core@6.22.1 babel-loader@6.2.10 babel-preset-es2015@6.22.
 
 Instalar spread para utilizar
 npm i --save --dev babel-plugin-transform-object-rest-spread
+
+Instalar React
+npm i --save-dev react@15.4.2
+
+Install preset react
+npm i --save-dev babel-preset-react@6.22.0
