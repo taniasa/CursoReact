@@ -14,3 +14,6 @@ npm i --save-dev react@15.4.2
 
 Install preset react
 npm i --save-dev babel-preset-react@6.22.0
+
+Install para css
+npm i --save-dev extract-text-webpack-plugin@1.0.1 style-loader@0.13.1 css-loader@0.26.1
