@@ -7,11 +7,14 @@ export const changeDescription = event => ({
     payload: event.target.value
 })
 
+//Esta implementação não deve ser feito sempre desta forma
+//O search é capaz de saber o valor descrição
 export const search = () => {
-    const request = axios.get(`${URL}?sort=-createdAt`)
-    return {
-        type: 'TODO_SEARCHED',
-        payload: request
+    return (dispatch, getState) => {
+        const description = getState().todo.description
+        const search = description ? `&description__regex=/${description}/` : ''
+        const request = axios.get(`${URL}?sort=-createdAt${search}`)
+            .then(resp => dispatch({type: 'TODO_SEARCHED', payload: resp.data}))
     }
 }
 
@@ -54,5 +57,5 @@ export const remove = (todo) => {
 }
 
 export const clear = () => {
-    return { type: 'TODO_CLEAR'} //Toda action tem q ter um type
+    return [{ type: 'TODO_CLEAR'}, search()] //Toda action tem q ter um type
 }

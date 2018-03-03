@@ -41,10 +41,10 @@ class TodoForm extends Component {
                     <IconButton style='primary' icon='plus'
                         onClick={() => add(description)}></IconButton>
                     <IconButton style='info' icon='search'
-                        onClick={() => search()}></IconButton>
+                        onClick={ search }></IconButton>
                     <IconButton style='default' icon='close'
                         onClick={(this.props.clear)}></IconButton> 
-                        {/* Como não tem nenhum parâmetro pode chamar o clear assim e não precisa ser como o search acima */}
+                        {/* Como não tem nenhum parâmetro pode chamar o clear assim e não precisa ser como o add acima */}
                 </Grid>
             </div>
         )
