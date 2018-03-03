@@ -4,8 +4,8 @@ import { applyMiddleware, createStore } from 'redux'
 import { Provider} from 'react-redux'
 
 import promise from 'redux-promise'
-import multi from 'redux-multi'
-import thunk from 'redux-thunk'
+import multi from 'redux-multi' //Faz uma ação mas não espera a outra terminar
+import thunk from 'redux-thunk' //Faz uma ação mas espera a anterior ser finalizada
 
 import App from './main/app'
 import reducers from './main/reducers'
