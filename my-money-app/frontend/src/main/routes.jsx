@@ -7,10 +7,10 @@ import BillingCycle from '../billingCycle/billingCycle'
 
 export default props => (
     <Router history={hashHistory}>
-        <Route path='/' component={Dashboard}>
-            {/* <IndexRoute component={Dashboard} /> */}
+        <Route path='/' component={App}>
+            <IndexRoute component={Dashboard} />
+            <Route path='billingCycles' component={BillingCycle} />
         </Route>
-        <Route path='/billingCycles' component={BillingCycle} />
         <Redirect from='*' to='/' />
     </Router>
 )
