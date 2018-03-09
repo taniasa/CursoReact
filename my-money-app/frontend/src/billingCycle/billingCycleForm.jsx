@@ -9,6 +9,7 @@ import CreditList from './creditList'
 class BillingCycleForm extends Component {
     
     render() {
+        //destruct
         const { handleSubmit, readOnly } = this.props
         return (
             <form role='form' onSubmit={handleSubmit}>
@@ -19,7 +20,7 @@ class BillingCycleForm extends Component {
                         label='Mês' cols='12 4' placeholder='Informe o mês'/>
                     <Field name='year' component={labelAndInput} type='number' readOnly={readOnly}
                         label='Ano' cols='12 4' placeholder='Informe o ano'/>
-                    <CreditList/>
+                    <CreditList cols='12 6' readOnly={readOnly}/>
                 </div>
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}>{this.props.submitLabel}</button>

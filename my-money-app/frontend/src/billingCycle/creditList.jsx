@@ -3,14 +3,19 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Field, arrayInsert, arrayRemove } from 'redux-form'
 import Grid from '../common/layout/grid'
+import Input from '../common/form/input'
+// import If from '../common/operator/if'
 
 class CreditList extends Component {
     renderRows() {
         return (
             <tr>
-                <td><Field name='credits[0].name' component='input'/></td>
-                <td><Field name='credits[0].value' component='input'/></td>
-                <td><Field name='???' component='input'/></td>
+                <td><Field name='credits[0].name' component={Input}
+                    placeholder='Informe o nome' readOnly={this.props.readOnly}
+                    /></td>
+                <td><Field name='credits[0].value' component={Input}
+                    placeholder='Informe o valor' readOnly={this.props.readOnly}/></td>
+                <td></td>
             </tr>
         )
     }
@@ -25,7 +30,6 @@ class CreditList extends Component {
                             <tr>
                                 <th>Nome</th>
                                 <th>Valor</th>
-                                <th>Ação</th>
                                 <th className='table-actions'>Ações</th>
                             </tr>
                         </thead>
