@@ -15,7 +15,7 @@ class CreditList extends Component {
 
     remove(index) {
         if(!this.props.readOnly && this.props.list.length > 1) {
-            this.props.arrayRemove('billingCycleForm', this.props.field, index)
+            this.props.arrayRemove('billingCycleForm', 'credits', index)
         }
     }
 
