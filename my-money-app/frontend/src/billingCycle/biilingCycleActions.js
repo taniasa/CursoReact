@@ -4,7 +4,7 @@ import { reset as resetForm, initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
 
 const BASE_URL = 'http://localhost:3004/api'
-
+const INITIAL_VALUES = {}
 export function getList() {
     const request = axios.get(`${BASE_URL}/billingCycles`)
     return {
@@ -20,12 +20,7 @@ export function create(values) {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.')
                 //dispatch recebe uma action, só esta aceitando um array pois estamos 
                 //utilizando o middleware multi
-                dispatch([
-                    resetForm('billingCycleForm'),
-                    getList(),
-                    selectTab('tabList'),
-                    showTabs('tabList', 'tabCreate')
-                ])
+                dispatch(init())
             })
             .catch(e=> {
                 e.response.data.errors.forEach(error => toastr.error('Erro', error))
@@ -38,5 +33,14 @@ export function showUpdate(billingCycle) {
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
         initialize('billingCycleForm', billingCycle)
+    ]
+}
+
+export function init() {
+    return [
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        getList(),
+        initialize('billingCycleForm', INITIAL_VALUES)
     ]
 }
