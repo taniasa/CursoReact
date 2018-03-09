@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getList, showUpdate } from './biilingCycleActions'
+import { getList, showUpdate, showDelete } from './biilingCycleActions'
 
 class BillingCycleList extends Component {
 
     componentWillMount() {
         this.props.getList()
     }
-    
+    //TODO: REFATORAR PARA BUTTON COMPONENTE
     renderRows() {
         const list = this.props.list || []
         return list.map(bc=> (
@@ -51,5 +51,5 @@ class BillingCycleList extends Component {
 }
 
 const mapStateToProps = state => ({list: state.billingCycle.list}) //Vínculo com o mapeamento do reducer
-const mapDispatchToProps = dispatch => bindActionCreators({getList, showUpdate}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({getList, showUpdate, showDelete}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleList)
