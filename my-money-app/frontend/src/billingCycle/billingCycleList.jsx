@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getList } from './biilingCycleActions'
+import { getList, showUpdate } from './biilingCycleActions'
 
 class BillingCycleList extends Component {
 
@@ -38,6 +38,7 @@ class BillingCycleList extends Component {
                             <th>Nome</th>
                             <th>Mês</th>
                             <th>Ano</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,5 +51,5 @@ class BillingCycleList extends Component {
 }
 
 const mapStateToProps = state => ({list: state.billingCycle.list}) //Vínculo com o mapeamento do reducer
-const mapDispatchToProps = dispatch => bindActionCreators({getList}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({getList, showUpdate}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleList)
