@@ -12,8 +12,8 @@ class BillingCycleForm extends Component {
     calculateSummary() {
         const sum = (t, v) => t + v
         return {
-            sumOfCredits: this.props.credits.map(c => +c.value || 0).reduce(sum),
-            sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum)
+            sumOfCredits: this.props.credits.map(c => +c.value || 0).reduce(sum,0),
+            sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum,0)
         }
     }
 
@@ -52,6 +52,7 @@ BillingCycleForm = reduxForm({form: 'billingCycleForm', destroyOnUnmount: false}
 const selector = formValueSelector('billingCycleForm')
 const mapStateToProps = state => ({
     credits: selector(state, 'credits'),
-    debts: selector(state, 'debts')})
+    debts: selector(state, 'debts')
+})
 const mapDispatchToProps = dispatch => bindActionCreators({init}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm)
